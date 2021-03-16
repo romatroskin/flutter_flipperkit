@@ -26,4 +26,7 @@ Pod::Spec.new do |s|
   s.xcconfig = {'OTHER_CFLAGS' => '-DFB_SONARKIT_ENABLED=1'}
   s.ios.deployment_target = '9.0'
   s.static_framework = true
+
+  # Flutter.framework does not contain a i386 slice. Only x86_64 simulators are supported.
+  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'VALID_ARCHS[sdk=iphonesimulator*]' => 'x86_64' }
 end
